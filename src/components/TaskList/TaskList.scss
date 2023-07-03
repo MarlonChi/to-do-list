@@ -1,0 +1,36 @@
+.Task {
+  display: flex;
+  justify-content: space-between;
+  max-width: 40rem;
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+
+  &__details {
+    text-align: left;
+
+    h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: centerd;
+
+    i {
+      margin: 0.5rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 0.4rem;
+      transition: 0.5rem;
+    }
+
+    i:hover {
+      background-color: #282c34;
+      color: #fff;
+    }
+  }
+}

@@ -13,9 +13,19 @@
 body {
   font-size: 1.6rem;
   font-family: "Raleway", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+.container {
+  min-height: 60vh;
+  text-align: center;
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 0.8rem;
+  }
 }
