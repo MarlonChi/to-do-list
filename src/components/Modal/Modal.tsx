@@ -16,7 +16,7 @@ export const Modal = ({ children }: Props) => {
     <div className="Modal hide" id="Mdl">
       <div className="Modal__fade" onClick={closeModal}></div>
       <div className="Modal__modal">
-        <h2>Texto modal</h2>
+        <h2>Editar tarefa</h2>
         {children}
       </div>
     </div>
