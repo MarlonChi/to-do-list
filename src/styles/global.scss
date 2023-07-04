@@ -17,11 +17,11 @@ body {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .container {
-  min-height: 60vh;
+  min-height: 70vh;
   text-align: center;
   padding: 2rem;
 

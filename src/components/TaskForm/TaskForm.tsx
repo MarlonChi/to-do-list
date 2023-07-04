@@ -7,24 +7,44 @@ interface Props {
   btnText: string;
   taskList: ITask[];
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
+  task?: ITask | null;
+  handleUpdate?(id: number, title: string, priority: number): void;
 }
 
-export const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
+export const TaskForm = ({
+  btnText,
+  taskList,
+  task,
+  setTaskList,
+  handleUpdate,
+}: Props) => {
   const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [priority, setPriority] = useState<number>(0);
 
+  useEffect(() => {
+    if (task) {
+      setId(task.id);
+      setTitle(task.title);
+      setPriority(task.priority);
+    }
+  }, [task]);
+
   const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const id = Math.floor(Math.random() * 1000);
+    if (handleUpdate) {
+      handleUpdate(id, title, priority);
+    } else {
+      const id = Math.floor(Math.random() * 1000);
 
-    const newTask: ITask = { id, title, priority };
+      const newTask: ITask = { id, title, priority };
 
-    setTaskList!([...taskList, newTask]);
+      setTaskList!([...taskList, newTask]);
 
-    setTitle("");
-    setPriority(0);
+      setTitle("");
+      setPriority(0);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +65,7 @@ export const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
           placeholder="Título da tarefa"
           onChange={handleChange}
           value={title}
+          required
         />
       </div>
       <div className="TaskForm__inputContainer">

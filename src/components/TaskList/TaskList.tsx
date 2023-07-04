@@ -1,13 +1,14 @@
-import React from "react";
 import { ITask } from "../../interfaces/Task";
 
 import "./TaskList.scss";
 
 interface Props {
   taskList: ITask[];
+  handleDelete(id: number): void;
+  handleEdit(task: ITask): void;
 }
 
-export const TaskList = ({ taskList }: Props) => {
+export const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
   return (
     <>
       {taskList.length > 0 ? (
@@ -18,8 +19,11 @@ export const TaskList = ({ taskList }: Props) => {
               <p>Prioridade: {task.priority}</p>
             </div>
             <div className="Task__actions">
-              <i className="bi bi-pencil"></i>
-              <i className="bi bi-trash"></i>
+              <i className="bi bi-pencil" onClick={() => handleEdit(task)}></i>
+              <i
+                className="bi bi-trash"
+                onClick={() => handleDelete(task.id)}
+              ></i>
             </div>
           </div>
         ))
